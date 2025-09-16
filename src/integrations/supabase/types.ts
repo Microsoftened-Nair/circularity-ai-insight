@@ -14,7 +14,185 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      assessments: {
+        Row: {
+          circularity_score: number | null
+          created_at: string | null
+          id: number
+          inputs: Json | null
+          metal: string
+          name: string
+          predicted_params: Json | null
+          production_route: Json | null
+          results: Json | null
+          status: string | null
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          circularity_score?: number | null
+          created_at?: string | null
+          id?: number
+          inputs?: Json | null
+          metal: string
+          name: string
+          predicted_params?: Json | null
+          production_route?: Json | null
+          results?: Json | null
+          status?: string | null
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          circularity_score?: number | null
+          created_at?: string | null
+          id?: number
+          inputs?: Json | null
+          metal?: string
+          name?: string
+          predicted_params?: Json | null
+          production_route?: Json | null
+          results?: Json | null
+          status?: string | null
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      lca_factors: {
+        Row: {
+          created_at: string | null
+          emission_co2_per_unit: number | null
+          energy_kwh_per_unit: number | null
+          id: number
+          process_name: string
+          source: string | null
+          unit: string
+          updated_at: string | null
+          water_liters_per_unit: number | null
+        }
+        Insert: {
+          created_at?: string | null
+          emission_co2_per_unit?: number | null
+          energy_kwh_per_unit?: number | null
+          id?: number
+          process_name: string
+          source?: string | null
+          unit: string
+          updated_at?: string | null
+          water_liters_per_unit?: number | null
+        }
+        Update: {
+          created_at?: string | null
+          emission_co2_per_unit?: number | null
+          energy_kwh_per_unit?: number | null
+          id?: number
+          process_name?: string
+          source?: string | null
+          unit?: string
+          updated_at?: string | null
+          water_liters_per_unit?: number | null
+        }
+        Relationships: []
+      }
+      models: {
+        Row: {
+          created_at: string | null
+          id: number
+          metrics: Json | null
+          name: string
+          path: string | null
+          type: string | null
+          version: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: number
+          metrics?: Json | null
+          name: string
+          path?: string | null
+          type?: string | null
+          version?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: number
+          metrics?: Json | null
+          name?: string
+          path?: string | null
+          type?: string | null
+          version?: string | null
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string | null
+          email: string
+          id: string
+          name: string
+          role: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          email: string
+          id: string
+          name: string
+          role?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          email?: string
+          id?: string
+          name?: string
+          role?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      recommendations: {
+        Row: {
+          assessment_id: number | null
+          created_at: string | null
+          description: string | null
+          estimated_co2_reduction: number | null
+          estimated_cost_change: number | null
+          id: number
+          rank: number | null
+          title: string
+        }
+        Insert: {
+          assessment_id?: number | null
+          created_at?: string | null
+          description?: string | null
+          estimated_co2_reduction?: number | null
+          estimated_cost_change?: number | null
+          id?: number
+          rank?: number | null
+          title: string
+        }
+        Update: {
+          assessment_id?: number | null
+          created_at?: string | null
+          description?: string | null
+          estimated_co2_reduction?: number | null
+          estimated_cost_change?: number | null
+          id?: number
+          rank?: number | null
+          title?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "recommendations_assessment_id_fkey"
+            columns: ["assessment_id"]
+            isOneToOne: false
+            referencedRelation: "assessments"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
